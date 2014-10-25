@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  
+  <title>PayPal Incontext express checkout using AJAX</title>
+  
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+
+</head>
+<body>
+
+<button type="submit" class="checkout" value="facebook" name="type">Checkout with PayPal</button>
+
+<script type="text/javascript">//<![CDATA[ 
+
+$(function(){
+  var 
+    $checkout = $('.checkout'),
+    authWindow;
+
+  $checkout.on('click', function(e){
+    e.preventDefault();
+    
+
+    //Mini browser initing
+    
+
+    /* do the AJAX call requesting for the authorize URL */
+    
+    $.ajax({
+      url: "https://ppexpress.nodejitsu.com/api/setEC",
+      type: "POST",
+
+      data: {
+        'RETURNURL': 'http://www.yourdomin.com/returnurl',
+        'CANCELURL': 'http://www.yourdomin.com/cancelurl',
+        'PAYMENTREQUEST_0_AMT': 10.0, //Payment amount
+        //More request parameters
+      },
+
+      crossDomain: true,
+
+      //Load the minibrowser with the redirection url
+      success: function (responseData, textStatus, jqXHR) {
+        console.log("in");
+      },
+
+      //CLose the minibrowser in case of errors
+      error: function (responseData, textStatus, errorThrown) {
+          alert('POST failed.');
+      }
+    });
+  });
+});
+//]]>  
+
+</script>
+
+</body></html>

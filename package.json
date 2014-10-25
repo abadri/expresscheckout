@@ -1,11 +1,18 @@
 {
     "name": "PPEC",
     "description": "PayPal Express Checkout sample",
-    "version": "0.0.1",
+    "version": "0.0.1-1",
     "private": true,
+    "subdomain": "ppexpress",
     "dependencies": {
-		"express": "~4.0.0",
-		"mongoose": "~3.6.13",
-		"body-parser": "~1.0.1"
-	}
+        "express": "~4.0.0",
+        "mongoose": "~3.6.13",
+        "body-parser": "~1.0.1"
+    },
+    "scripts": {
+        "start": "node server.js"
+    },
+    "engines": {
+        "node": "0.10.x"
+    }
 }
